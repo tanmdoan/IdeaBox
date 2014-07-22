@@ -1,17 +1,30 @@
 require './idea'
 
 class IdeaBoxApp < Sinatra::Base
+  set :method_override, true
   get '/' do
-    erb :index
+    erb :index, locals: {ideas: Idea.all}
   end
 
   post '/' do
-    #create an idea
-    idea = Idea.new
-    #store the idea
+    idea = Idea.new(params[:idea])
     idea.save
-    #return to index and show ideas
-    "Creating an IDEA!"
+    redirect '/'
+  end
+
+  delete '/:id' do |id|
+    Idea.delete(id.to_i)
+    redirect '/'
+  end
+
+  put '/:id' do |id|
+    Idea.update(id.to_i, params[:idea])
+    redirect '/'
+  end
+
+  get '/:id/edit' do |id|
+    idea = Idea.find(id.to_i)
+    erb :edit, locals: {id: id, idea: idea}
   end
 
   not_found do
