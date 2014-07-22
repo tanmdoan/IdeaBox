@@ -1,10 +1,10 @@
 ---
 ideas:
-- title: layout
-  description: works! sweet! yup
-- title: ideaStore
-  description: still works?
-- title: ideaStore
-  description: still works?
-- title: ideastore
-  description: creates>? yup!
+- title: Cake
+  description: I like cake, but not really..
+  rank: 3
+- title: Cake
+  description: I like cake?
+- title: cool
+  description: cool
+  rank: 1

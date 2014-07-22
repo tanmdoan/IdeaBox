@@ -1,21 +1,34 @@
-require './idea_store'
+require 'idea_box'
 
 class Idea
-  attr_reader :title, :description
+  attr_reader :title, :description, :rank, :id
+  include Comparable
 
   def initialize(attributes)
     @title = attributes["title"]
     @description = attributes["description"]
+    @rank = attributes["rank"] || 0
+    @id = attributes["id"]
   end
 
-  # def save
-  #   database.transaction do |db|
-  #     db['ideas'] ||= []
-  #     db['ideas'] << {"title" => title, "description" => description}
-  #   end
-  # end
-  #
-  # def database
-  #   IdeaStore.database
-  # end
+  def save
+    IdeaStore.create(to_h)
+  end
+
+
+  def to_h
+    {
+      "title" => title,
+      "description" => description,
+      "rank" => rank
+    }
+  end
+
+  def like!
+    @rank += 1
+  end
+
+  def <=>(other)
+    other.rank <=> rank
+  end
 end
