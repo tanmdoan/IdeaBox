@@ -2,8 +2,12 @@
       <p>
         Your Idea:
       </p>
+      <p>Title:</p>
       <input type='text' name='idea[title]'/><br/>
-      <textarea name='idea[description]'></textarea><br/>
+      <p>Description:</p>
+      <textarea name='idea[description]'>Type your idea here...</textarea><br/>
+      <p>Tag:</p>
+      <input type='text' name='idea[tag]'/><br/>
       <input type='submit'/>
     </form>
 
@@ -13,7 +17,8 @@
       <% ideas.each_with_index do |idea| %>
         <li>
           <%= idea.title %> (<%= idea.id %>)<br/>
-          <%= idea.description %>
+          <%= idea.description %><br/>
+          tags: <%= idea.tag %><br/>
           <a href="/<%= idea.id %>/edit">Edit</a>
           <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
             <input type='submit' value="+"/>

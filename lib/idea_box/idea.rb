@@ -1,7 +1,7 @@
 require 'idea_box'
 
 class Idea
-  attr_reader :title, :description, :rank, :id
+  attr_reader :title, :description, :rank, :id, :tag
   include Comparable
 
   def initialize(attributes)
@@ -9,6 +9,7 @@ class Idea
     @description = attributes["description"]
     @rank = attributes["rank"] || 0
     @id = attributes["id"]
+    @tag = attributes["tag"]
   end
 
   def save
@@ -20,7 +21,8 @@ class Idea
     {
       "title" => title,
       "description" => description,
-      "rank" => rank
+      "rank" => rank,
+      "tag" => tag
     }
   end
 
