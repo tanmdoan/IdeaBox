@@ -2,24 +2,24 @@
       <p>
         Your Idea:
       </p>
-      <p>Title:</p>
+      <div>Title:</div>
       <input type='text' name='idea[title]'/><br/>
-      <p>Description:</p>
+      <div>Description:</div>
       <textarea name='idea[description]'>Type your idea here...</textarea><br/>
-      <p>Tag:</p>
-      <input type='text' name='idea[tag]'/><br/>
-      <input type='submit'/>
+      <div>Tag:</div>
+       <input type='text' name='idea[tag]'/><br/>
+       <input type='submit'/>
     </form>
 
     <h3>Existing Ideas</h3>
 
     <ul>
-      <% ideas.each_with_index do |idea| %>
+      <% ideas.each do |idea| %>
         <li>
           <%= idea.title %> (<%= idea.id %>)<br/>
           <%= idea.description %><br/>
           tags: <% idea.tag.each do |tag| %>
-          <a href="/tags"><%= tag %></a>
+          <a href="/<%= tag %>/tag"><%= tag %></a>
           <% end %>
           </br><a href="/<%= idea.id %>/edit">Edit</a>
           <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
@@ -33,7 +33,10 @@
       <% end %>
     </ul>
     <p>
-       <form action="/" method="POST">
-         <input type="submit" value="sort by tags"/>
+    <div>Sort by tags:
+       <form action="/sorted_tags" method="get">
+         <input type="text" name=tags>
+         <input type="submit" value="Sort!">
        </form>
+    </div>
     </p>

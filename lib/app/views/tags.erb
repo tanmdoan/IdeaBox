@@ -2,3 +2,14 @@
 <p>
   Your ideas:
 </p>
+<ul>
+  <% ideas.each_with_index do |idea| %>
+    <li>
+      <%= idea.title %> (<%= idea.id %>)<br/>
+      <%= idea.description %><br/>
+      tags: <% idea.tag.each do |tag| %>
+      <a href="/<%= tag %>/tag"><%= tag %></a>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

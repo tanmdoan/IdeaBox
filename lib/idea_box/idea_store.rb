@@ -15,14 +15,18 @@ class IdeaStore
     tags.flatten.uniq!.sort
   end
 
+  def self.sort_by_tags(tags)
+    
+  end
+
   def self.all_by_tags
     ideas = {}
-    tags.each { |tag| ideas[tag] = find_by_tag(tag) }
+    tags.each { |tag| ideas[tag] = find_by_tag(tag) }.flatten
     ideas
   end
 
   def self.find_by_tag(tag)
-    all.find_all { |idea| idea.tag.includes?(tag) }
+    all.find_all { |idea| idea.tag.include?(tag) }.flatten
   end
 
   def self.raw_ideas
@@ -51,7 +55,7 @@ class IdeaStore
 
   def self.update(id, data)
     database.transaction do
-      database['ideas'][id] = data
+      database['ideas'][id] = database['ideas'][id].merge(data)
     end
   end
 
@@ -65,8 +69,9 @@ class IdeaStore
   end
 
   def self.create(attributes)
+    idea = Idea.create(attributes)
     database.transaction do
-      database['ideas'] << attributes
+      database['ideas'] << idea.to_h
     end
   end
 end
