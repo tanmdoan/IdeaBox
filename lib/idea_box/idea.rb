@@ -9,7 +9,11 @@ class Idea
     @description = attributes["description"]
     @rank = attributes["rank"] || 0
     @id = attributes["id"]
-    @tag = attributes["tag"]
+    @tag = format_tag(attributes["tag"])
+  end
+
+  def format_tag(tags)
+    tags.to_s.split(/\s*,\s*/)
   end
 
   def save

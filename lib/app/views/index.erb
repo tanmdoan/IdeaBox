@@ -18,8 +18,10 @@
         <li>
           <%= idea.title %> (<%= idea.id %>)<br/>
           <%= idea.description %><br/>
-          tags: <%= idea.tag %><br/>
-          <a href="/<%= idea.id %>/edit">Edit</a>
+          tags: <% idea.tag.each do |tag| %>
+          <a href="/tags"><%= tag %></a>
+          <% end %>
+          </br><a href="/<%= idea.id %>/edit">Edit</a>
           <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
             <input type='submit' value="+"/>
           </form>
@@ -30,3 +32,8 @@
         </li>
       <% end %>
     </ul>
+    <p>
+       <form action="/" method="POST">
+         <input type="submit" value="sort by tags"/>
+       </form>
+    </p>

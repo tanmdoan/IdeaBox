@@ -2,14 +2,27 @@ require 'yaml/store'
 require 'idea_box'
 
 class IdeaStore
-
-
   def self.all
     ideas = []
     raw_ideas.each_with_index do |data, i|
       ideas << Idea.new(data.merge("id" => i))
     end
     ideas
+  end
+
+  def self.tags
+    tags = all.collect(&:tag)
+    tags.flatten.uniq!.sort
+  end
+
+  def self.all_by_tags
+    ideas = {}
+    tags.each { |tag| ideas[tag] = find_by_tag(tag) }
+    ideas
+  end
+
+  def self.find_by_tag(tag)
+    all.find_all { |idea| idea.tag.includes?(tag) }
   end
 
   def self.raw_ideas

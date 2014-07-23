@@ -17,6 +17,14 @@ class IdeaBoxApp < Sinatra::Base
     redirect '/'
   end
 
+  get '/tags' do
+    erb :index, locals: {ideas: IdeaStore.all_by_tags}
+  end
+
+  get '/:tags' do |tag|
+    erb :tags
+  end
+
   delete '/:id' do |id|
     IdeaStore.delete(id.to_i)
     redirect '/'
