@@ -23,19 +23,9 @@ class IdeaStore
     end
   end
 
-  def self.filter(created_at)
-
-  end
-
-  def self.filter_by_time(time)
-    formatted_time = time[0...2]
-    filtered_time = all.find_all { |idea| idea.created_at.match(formatted_time) }
-    # binding.pry
-  end
-
-  def self.filter_by_day(day)
-    formatted_day = day[0...3].capitalize
-    all.find_all { |idea| idea.created_at.match(formatted_day) }
+  def self.filter_by(created_at)
+    formatted_creation = created_at[0...3].capitalize
+    all.find_all { |idea| idea.created_at.match(formatted_creation) }
   end
 
   def self.all_by_tags
@@ -82,6 +72,18 @@ class IdeaStore
     database.transaction do
       database['ideas'][id] = database['ideas'][id].merge(data)
     end
+    history_database.transaction do
+      database['ideas'][id] = database['ideas'][id].merge(data)
+    end
+  end
+
+  def self.history_database
+    return @history if @history
+    @history = YAML::Store.new("db/history")
+    @history.transaction do
+      @history['ideas'] ||= []
+    end
+    @history
   end
 
   def self.database

@@ -22,7 +22,7 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/filter' do
-    erb :filter, locals: {ideas: IdeaStore.filter_by_day(params[:filter])}
+    erb :filter, locals: {ideas: IdeaStore.filter_by(params[:filter])}
   end
 
   get '/:tags/tag' do |tag|
