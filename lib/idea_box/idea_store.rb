@@ -1,5 +1,5 @@
 require 'yaml/store'
-require 'idea_box'
+require './lib/idea_box'
 
 class IdeaStore
   def self.all
@@ -17,7 +17,10 @@ class IdeaStore
 
   def self.search(phrase)
     formatted_phrase = phrase.downcase
-    found = all.find_all { |idea| idea.description.match(phrase) || idea.title.match(phrase) }
+    all.find_all do |idea|
+      idea.description.match(formatted_phrase) || idea.title.match(formatted_phrase) ||
+      idea.tag.join(",").match(formatted_phrase)
+    end
     # binding.pry
   end
 
@@ -47,6 +50,12 @@ class IdeaStore
   def self.delete(position)
     database.transaction do
       database['ideas'].delete_at(position)
+    end
+  end
+
+  def self.delete_all
+    database.transaction do
+      database['ideas'] = []
     end
   end
 

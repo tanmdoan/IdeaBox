@@ -1,4 +1,4 @@
-require 'idea_box'
+# require 'idea_box'
 
 class Idea
   attr_reader :title, :description, :rank, :id, :tag

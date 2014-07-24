@@ -1,54 +1,9 @@
 ---
 ideas:
-- title: something
-  description: asdfasdfType your idea here...
-  rank: 7
+- title: colors
+  description: bright ones
+  rank: 0
   tag:
-  - cat
-  - dog
-  - ferret
-- title: test
-  description: testType your idea here...
-- title: something
-  description: asdfType your idea here...
-  rank: 8
-  tag:
-  - yellow
+  - red
   - orange
-- title: new
-  description: newType your idea here...
-  rank: 1
-  tag:
-  - new
-  - new2
-- title: more colors
-  description: Type your idea here...
-  rank: 1
-  tag:
   - yellow
-  - blue
-  - green
-- title: new
-  description: ideaType your idea here...
-  rank: 1
-  tag:
-  - foo
-  - bar
-- title: searching
-  description: abc
-  rank: 0
-  tag:
-  - alphabet
-  - finding
-- title: cake
-  description: I like cake..
-  rank: 0
-  tag:
-  - khoi
-  - deena
-  - you
-- title: black
-  description: i like black
-  rank: 0
-  tag:
-  - khoi
