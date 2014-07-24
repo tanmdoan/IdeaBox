@@ -16,7 +16,8 @@ class IdeaStore
   end
 
   def self.search(phrase)
-    found = all.find_all { |idea| idea.description == phrase }
+    formatted_phrase = phrase.downcase
+    found = all.find_all { |idea| idea.description.match(phrase) || idea.title.match(phrase) }
     # binding.pry
   end
 

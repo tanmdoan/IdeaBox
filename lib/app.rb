@@ -18,7 +18,7 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/search' do
-    erb :index, locals: {ideas: IdeaStore.search(params[:search])}
+    erb :search, locals: {ideas: IdeaStore.search(params[:search])}
   end
 
   get '/:tags/tag' do |tag|
