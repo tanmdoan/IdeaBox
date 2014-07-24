@@ -3,6 +3,8 @@ GEM
   specs:
     backports (3.6.0)
     coderay (1.1.0)
+    haml (4.0.5)
+      tilt
     method_source (0.8.2)
     multi_json (1.10.1)
     pry (0.10.0)
@@ -32,6 +34,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  haml
   pry
   sinatra
   sinatra-contrib

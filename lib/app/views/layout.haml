@@ -1,6 +1,6 @@
-<html>
-  <head>
-    <style type="text/css">
+%html
+  %head
+    :css
       body {
           font-family: Comic Sans MS, sans-serif;
           background-color: LightGrey;}
@@ -47,10 +47,6 @@
         	text-shadow:1px 1px 0px #7cacde;
           white-space:nowrap;
         }
-    </style>
-    <title>IdeaBox</title>
-  </head>
-  <body>
-    <%= yield %>
-  </body>
-</html>
+        %title IdeaBox
+  %body
+    = yield

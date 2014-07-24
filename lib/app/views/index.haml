@@ -1,0 +1,49 @@
+%form{:action => "/", :method => "POST"}
+  %h1
+    IdeaBox
+  %h2
+    Your Idea:
+  %div Title:
+  %input{:name => "idea[title]", :type => "text"}/
+  %br/
+  %div Description:
+  %textarea{:name => "idea[description]"} Type your idea here...
+  %br/
+  %div Tags:
+  %input{:name => "idea[tag]", :type => "text"}/
+  %br/
+  %input{:type => "submit"}/
+%h3 Existing Ideas
+%ul
+  - ideas.each do |idea|
+    %li
+      %div
+        Title: #{idea.title} (#{idea.id})
+        %br/
+        %div
+          Description: #{idea.description}
+          %br/
+          %div
+            Created at: #{idea.created_at}
+            %br/
+            tags:
+            - idea.tag.each do |tag|
+              %a{:href => "/#{tag}/tag"}= tag
+            %div
+              %a{:href => "/#{idea.id}/edit"} Edit
+              %form{:action => "/#{idea.id}/like", :method => "POST", :style => "display: inline"}
+                %input{:type => "submit", :value => "+"}/
+              %form{:action => "/#{idea.id}", :method => "POST"}
+                %input{:name => "_method", :type => "hidden", :value => "DELETE"}
+                  %input{:type => "submit", :value => "delete"}/
+%p
+  %div
+    Search:
+    %form{:action => "/search", :method => "get"}
+      %input{:name => "search", :type => "text"}
+        %input{:type => "submit", :value => "Search"}
+  %div
+    Filter by Hour (military) or Day:
+    %form{:action => "/filter", :method => "get"}
+      %input{:name => "filter", :type => "text"}
+        %input{:type => "submit", :value => "Filter"}

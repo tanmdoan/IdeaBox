@@ -69,10 +69,9 @@ class IdeaStore
   end
 
   def self.update(id, data)
-    # old_idea = find(id.to_i)
-    # HistoryStore.create(old_idea)
+    idea = Idea.create(data)
     database.transaction do
-      database['ideas'][id] = database['ideas'][id].merge(data)
+      database['ideas'][id] = database['ideas'][id].merge(idea.to_h)
     end
   end
 

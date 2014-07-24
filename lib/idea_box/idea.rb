@@ -1,4 +1,3 @@
-# require 'idea_box'
 require 'time'
 
 class Idea

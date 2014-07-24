@@ -5,11 +5,11 @@ class IdeaBoxApp < Sinatra::Base
   set :root, 'lib/app'
 
   not_found do
-    erb :error
+    haml :error
   end
 
   get '/' do
-    erb :index, locals: {ideas: IdeaStore.all.sort}
+    haml :index, locals: {ideas: IdeaStore.all.sort}
   end
 
   post '/' do
@@ -18,15 +18,15 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/search' do
-    erb :search, locals: {ideas: IdeaStore.search(params[:search])}
+    haml :search, locals: {ideas: IdeaStore.search(params[:search])}
   end
 
   get '/filter' do
-    erb :filter, locals: {ideas: IdeaStore.filter_by(params[:filter])}
+    haml :filter, locals: {ideas: IdeaStore.filter_by(params[:filter])}
   end
 
   get '/:tags/tag' do |tag|
-    erb :tags, locals: {ideas: IdeaStore.find_by_tag(tag)}
+    haml :tags, locals: {ideas: IdeaStore.find_by_tag(tag)}
   end
 
   delete '/:id' do |id|
@@ -41,7 +41,7 @@ class IdeaBoxApp < Sinatra::Base
 
   get '/:id/edit' do |id|
     idea = IdeaStore.find(id.to_i)
-    erb :edit, locals: {idea: idea}
+    haml :edit, locals: {idea: idea}
   end
 
   post '/:id/like' do |id|

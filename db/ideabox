@@ -2,14 +2,18 @@
 ideas:
 - title: color
   description: dark
-  rank: 1
+  rank: 0
   tag:
-  - blue
-  - black
-  - brown
-  created_at: Thu, 11:17
+  - wow
+  created_at: Thu, 11:43
 - title: ''
   description: Type your idea here...
   rank: 0
   tag: []
   created_at: Thu, 11:10
+- title: yay
+  description: haml works!
+  rank: 0
+  tag:
+  - yay
+  created_at: Thu, 11:37
