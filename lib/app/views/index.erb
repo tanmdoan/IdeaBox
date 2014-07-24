@@ -16,8 +16,9 @@
     <ul>
       <% ideas.each do |idea| %>
         <li>
-          <%= idea.title %> (<%= idea.id %>)<br/>
-          <%= idea.description %><br/>
+          <div> Title: <%= idea.title %> (<%= idea.id %>)<br/>
+          <div> Description: <%= idea.description %><br/>
+          <div> Created at: <%= idea.created_at %><br/>
           tags: <% idea.tag.each do |tag| %>
           <a href="/<%= tag %>/tag"><%= tag %></a>
           <% end %>
@@ -37,6 +38,13 @@
        <form action="/search" method="get">
          <input type="text" name=search>
          <input type="submit" value="Search">
+       </form>
+    </div>
+
+    <div>Filter by Hour (military) or Day:
+       <form action="/filter" method="get">
+         <input type="text" name=filter>
+         <input type="submit" value="Filter">
        </form>
     </div>
     </p>

@@ -29,7 +29,7 @@ class Idea
       "description" => description,
       "rank" => rank,
       "tag" => tag,
-      "created_at" => Time.now.strftime('%a, %r')
+      "created_at" => Time.now.strftime('%a, %R')
     }
   end
 

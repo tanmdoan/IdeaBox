@@ -21,7 +21,21 @@ class IdeaStore
       idea.description.match(formatted_phrase) || idea.title.match(formatted_phrase) ||
       idea.tag.join(",").match(formatted_phrase)
     end
+  end
+
+  def self.filter(created_at)
+
+  end
+
+  def self.filter_by_time(time)
+    formatted_time = time[0...2]
+    filtered_time = all.find_all { |idea| idea.created_at.match(formatted_time) }
     # binding.pry
+  end
+
+  def self.filter_by_day(day)
+    formatted_day = day[0...3].capitalize
+    all.find_all { |idea| idea.created_at.match(formatted_day) }
   end
 
   def self.all_by_tags
