@@ -23,14 +23,20 @@ ideas:
   - new2
 - title: more colors
   description: Type your idea here...
-  rank: 0
+  rank: 1
   tag:
   - yellow
   - blue
   - green
 - title: new
   description: ideaType your idea here...
-  rank: 0
+  rank: 1
   tag:
   - foo
   - bar
+- title: searching
+  description: abc
+  rank: 0
+  tag:
+  - alphabet
+  - finding

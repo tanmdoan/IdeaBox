@@ -15,8 +15,9 @@ class IdeaStore
     tags.flatten.uniq!.sort
   end
 
-  def self.sort_by_tags(tags)
-    
+  def self.search(phrase)
+    found = all.find_all { |idea| idea.description == phrase }
+    # binding.pry
   end
 
   def self.all_by_tags
