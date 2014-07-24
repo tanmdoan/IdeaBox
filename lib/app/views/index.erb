@@ -1,12 +1,14 @@
     <form action='/' method='POST'>
-      <p>
-        Your Idea:
-      </p>
+      <h1>
+        IdeaBox
+      </h1>
+      <h2> Your Idea:
+      </h2>
       <div>Title:</div>
       <input type='text' name='idea[title]'/><br/>
       <div>Description:</div>
       <textarea name='idea[description]'>Type your idea here...</textarea><br/>
-      <div>Tag:</div>
+      <div>Tags:</div>
        <input type='text' name='idea[tag]'/><br/>
        <input type='submit'/>
     </form>
@@ -22,14 +24,14 @@
           tags: <% idea.tag.each do |tag| %>
           <a href="/<%= tag %>/tag"><%= tag %></a>
           <% end %>
-          </br><a href="/<%= idea.id %>/edit">Edit</a>
+        </br><div><a href="/<%= idea.id %>/edit">Edit</a>
           <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
             <input type='submit' value="+"/>
           </form>
           <form action="/<%= idea.id %>" method="POST">
            <input type="hidden" name="_method" value="DELETE">
            <input type="submit" value="delete"/>
-          </form>
+         </form></div>
         </li>
       <% end %>
     </ul>

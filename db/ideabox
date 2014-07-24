@@ -1,30 +1,15 @@
 ---
 ideas:
-- title: time
-  description: stupid time, testing history
-  rank: 0
-  tag:
-  - formatting
-  created_at: 11:32:34 PM
-- title: last try time
-  description: does it work yet?
-  rank: 0
-  tag:
-  - time
-  created_at: Wed, 11:33:38 PM
 - title: color
   description: dark
-  rank: 0
+  rank: 1
   tag:
   - blue
   - black
   - brown
-  created_at: Thu, 08:50:44 AM
-- title: new idea
-  description: test time
+  created_at: Thu, 11:17
+- title: ''
+  description: Type your idea here...
   rank: 0
-  tag:
-  - time
-  - hour
-  - military
-  created_at: Thu, 09:08
+  tag: []
+  created_at: Thu, 11:10

@@ -69,21 +69,11 @@ class IdeaStore
   end
 
   def self.update(id, data)
+    # old_idea = find(id.to_i)
+    # HistoryStore.create(old_idea)
     database.transaction do
       database['ideas'][id] = database['ideas'][id].merge(data)
     end
-    history_database.transaction do
-      database['ideas'][id] = database['ideas'][id].merge(data)
-    end
-  end
-
-  def self.history_database
-    return @history if @history
-    @history = YAML::Store.new("db/history")
-    @history.transaction do
-      @history['ideas'] ||= []
-    end
-    @history
   end
 
   def self.database
